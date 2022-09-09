@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm install
+      - run: npm install --force
       - run: npm run build
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@v2.1.1
