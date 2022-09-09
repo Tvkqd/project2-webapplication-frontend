@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import TodoServices from "@/services/TodoServices.js";
+import TodoServices from "@/services/ClassServices.js";
 export default {
   components: {
     UserDisplay

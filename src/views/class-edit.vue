@@ -27,7 +27,7 @@
 <script>
 import ItemDisplay from '@/components/ItemDisplay.vue'
 import AddItemDisplay from '@/components/AddItemDisplay.vue'
-import TodoServices from "@/services/TodoServices.js";
+import TodoServices from "@/services/ClassServices.js";
 export default {
    components: {
     ItemDisplay,
