@@ -6,9 +6,9 @@ export default new Router({
   routes: [
     {
       path: "/",
-      alias: "/landing",
-      name: "landing",
-      component: () => import("./views/Landing")
+      alias: "/list-view",
+      name: "list-view",
+      component: () => import("./views/List-View")
     },
     /*{
       path: "/tutorials/:id",

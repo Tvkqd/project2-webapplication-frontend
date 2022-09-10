@@ -15,8 +15,7 @@
         <v-data-table
           :headers="headers"
           :items="courses"
-          disable-pagination
-          :hide-default-footer="true"
+          :items-per-page="10"
         >
           <template v-slot:[`item.actions`]="{ item }">
             <v-icon small class="mr-2" @click="editCourses(item.id)">mdi-pencil</v-icon>
@@ -42,10 +41,10 @@ export default {
       title: "",
       headers: [
         //add course stuff
-        { text: "Title", align: "start", sortable: false, value: "title" },
+        { text: "Department", align: "start", sortable: false, value: "dept" },
+        { text: "Course Number", value: "course_number", sortable: false },
+        { text: "Name", value: "name", sortable: false },
         { text: "Description", value: "description", sortable: false },
-        { text: "Status", value: "status", sortable: false },
-        { text: "Actions", value: "actions", sortable: false },
       ],
     };
   },
