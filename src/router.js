@@ -6,19 +6,19 @@ export default new Router({
   routes: [
     {
       path: "/",
-      alias: "/courses",
-      name: "courses",
-      component: () => import("./components/CoursesList")
+      alias: "/list-view",
+      name: "list-view",
+      component: () => import("./views/List-View")
     },
-    {
-      path: "/courses/:id",
-      name: "course-details",
-      component: () => import("./components/Course")
+    /*{
+      path: "/tutorials/:id",
+      name: "tutorial-details",
+      component: () => import("./views/Tutorial")
     },
     {
       path: "/add",
       name: "add",
-      component: () => import("./components/AddCourse")
-    }
+      component: () => import("./views/AddTutorial")
+    }*/
   ]
 });

@@ -1,30 +1,26 @@
 import http from "../http-common";
+
 class CourseDataService {
   getAll() {
-    return http.get("/courses");
+    return http.get("/");
   }
-  get(course_number) {
-    return http.get(`/courses/${course_number}`);
+  get(id) {
+    return http.get(`/tutorials/${id}`);
   }
   create(data) {
-    return http.post("/courses", data);
+    return http.post("/tutorials", data);
   }
-  update(course_number, data) {
-    return http.put(`/courses/${course_number}`, data);
+  update(id, data) {
+    return http.put(`/tutorials/${id}`, data);
   }
-  delete(course_number) {
-    return http.delete(`/courses/${course_number}`);
+  delete(id) {
+    return http.delete(`/tutorials/${id}`);
   }
   deleteAll() {
-    return http.delete(`/courses`);
+    return http.delete(`/tutorials`);
   }
-
-  findByName(name) {
-    return http.get(`/courses?name=${name}`);
+  findByTitle(title) {
+    return http.get(`/tutorials?title=${title}`);
   }
-  /*
-  findByDept(name) {
-    return http.get(`/courses?dept=${dept}`);
-  } */
 }
 export default new CourseDataService();
