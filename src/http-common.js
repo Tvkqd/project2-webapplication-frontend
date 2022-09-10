@@ -6,20 +6,20 @@ export default axios.create({
   headers: {
     "Content-type": "application/json"
   },
-  getClasses() {
-    return apiClient.get("classes");
+  getCourses() {
+    return apiClient.get("courses");
   },
-  getClass(id) {
-    return apiClient.get("classes/" + id);
+  getCourse(id) {
+    return apiClient.get("courses/" + id);
   },
-  addClass(c) {
-    return apiClient.post("classes", c); //class is reserved, so we use c instead
+  addCourse(c) {
+    return apiClient.post("courses", course); 
   },
-  updateList(classId, c) {
-    return apiClient.put("classes/" + classId, c); 
+  updateCourse(courseId, c) {
+    return apiClient.put("courses/" + courseId, course); 
   },
-  deleteList(classId) {
-    return apiClient.delete("classes/" + classId);
+  deleteCourse(courseId) {
+    return apiClient.delete("courses/" + courseId);
   }
 });
 

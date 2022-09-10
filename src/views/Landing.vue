@@ -1,33 +1,33 @@
 <template>
-  <div class="home">
+  <div course="home">
 
-    <H1>Classes List</H1>
+    <H1>Courses List</H1>
     <br>
-    <!-- using 'c' because 'class' is a keyword -->
-    <ClassListDisplay v-for="c in classes" :key="c.id" :c="c" /> 
+
+    <CourseListDisplay v-for="course in coursees" :key="course.id" :course="course" /> 
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import httpCommon from '@/http-common.js';
-import ClassListDisplay from '@/components/ClassListDisplay.vue' 
+import CourseListDisplay from '@/components/CourseListDisplay' 
 
 export default {
   // eslint-disable-next-line
   name: "Home",
   components: {
-    ClassListDisplay,
+    CourseListDisplay,
   },
   data() {
     return {
-      classes: [],
+      courses: [],
     };
   },
   created() {
-    httpCommon.getClasses()
+    httpCommon.getCourses()
       .then((response) => {
-        this.classes = response.data.classes;
+        this.courses = response.data.courses;
       })
       .catch((error) => {
         console.log("There was an error:", error.response);

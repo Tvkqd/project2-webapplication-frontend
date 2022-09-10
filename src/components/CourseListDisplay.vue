@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span>{{ c.name }} (</span>
+    <span>{{ course.name }} (</span>
     <span>)</span>
   </div>
 </template>
@@ -8,7 +8,7 @@
 <script>
 export default {
   props: {
-    c: Object
+    course: Object
   }
 }
 </script>
