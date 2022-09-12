@@ -107,7 +107,7 @@
       },
       
       searchName() {
-        CourseDataService.findByName(this.name)
+        CourseDataService.findName(this.name)
           .then(response => {
             this.courses = response.data;
             console.log(response.data);
