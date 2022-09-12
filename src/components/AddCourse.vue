@@ -1,78 +1,42 @@
 <template>
-    <div class="submit-form">
-      <div v-if="!submitted">
-        <div class="form-group">
-          <label for="dept">Department</label>
-          <input
-            type="text"
-            class="form-control"
-            id="dept"
-            required
-            v-model="course.dept"
-            name="dept"
-          />
-        </div>
-        <div class="form-group">
-          <label for="course_number">Course Number</label>
-          <input
-            type="text"
-            class="form-control"
-            id="course_number"
-            required
-            v-model="course.course_number"
-            name="course_number"
-          />
-        </div>
-        <div class="form-group">
-          <label for="level">Level</label>
-          <input
-            type="text"
-            class="form-control"
-            id="level"
-            required
-            v-model="course.level"
-            name="level"
-          />
-        </div>
-        <div class="form-group">
-          <label for="hours">Hours</label>
-          <input
-            type="text"
-            class="form-control"
-            id="hours"
-            required
-            v-model="course.hours"
-            name="hours"
-          />
-        </div>
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            required
-            v-model="course.name"
-            name="name"
-          />
-        </div>
-        <div class="form-group">
-          <label for="description">Description</label>
-          <input
-            class="form-control"
-            id="description"
-            required
-            v-model="course.description"
-            name="description"
-          />
-        </div>
-        <button @click="saveCourse" class="btn btn-success">Submit</button>
-      </div>
-      <div v-else>
-        <h4>You submitted successfully!</h4>
-        <button class="btn btn-success" @click="newCourse">Add</button>
-      </div>
-    </div>
+  <v-card>
+    <v-card-title>Add Course</v-card-title>
+    
+    <v-card-text>
+      <v-form>
+        <v-text-field 
+                label="Department" 
+                v-model="dept"
+        ></v-text-field>
+        <v-text-field 
+                label="Course Number" 
+                v-model="course_number"
+        ></v-text-field>
+        <v-text-field 
+                label="Level" 
+                v-model="level"
+        ></v-text-field>
+        <v-text-field 
+                label="Hours" 
+                v-model="hours"
+        ></v-text-field>
+        <v-text-field 
+                label="Description" 
+                v-model="description"
+        ></v-text-field>
+    </v-form>
+    
+    </v-card-text>
+
+   
+    
+    <v-card-actions>
+      <v-spacer></v-spacer>
+      <v-btn color="gray">Submit</v-btn>
+      <v-btn color="gray">Clear</v-btn>
+      <v-spacer></v-spacer>
+    </v-card-actions>
+  </v-card>
   </template>
   <script>
   import CourseDataService from "../services/CourseDataService";
@@ -85,7 +49,6 @@
           course_number: "",
           level: "",
           hours: "",
-          title: "",
           name: "",
           description: ""
         },

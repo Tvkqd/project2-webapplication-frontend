@@ -20,11 +20,13 @@
           <v-btn to="/" text color="red darken-4">Course</v-btn>
           <v-btn to="/about" text color="red darken-4">About</v-btn>
           <v-btn to="/hello" text color="red darken-4">Hello</v-btn>
+          <v-btn to="/add" text color="red darken-4">Add</v-btn>
         </v-toolbar-items>
       </div>
     </v-app-bar>
 
     <v-main>
+      <!--Load the views files-->
       <router-view/>
     </v-main>
 
