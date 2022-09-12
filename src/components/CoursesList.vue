@@ -6,7 +6,7 @@
             v-model="name"/>
           <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="button"
-              @click="searchName"
+              @click="searchName()"
             >
               Search
             </button>
