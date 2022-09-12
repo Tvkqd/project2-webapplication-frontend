@@ -8,7 +8,7 @@ class CourseDataService {
     return http.get(`/tutorials/${id}`);
   }
   create(data) {
-    return http.post("/tutorials", data);
+    return http.post("/", data);
   }
   update(id, data) {
     return http.put(`/tutorials/${id}`, data);
@@ -20,7 +20,7 @@ class CourseDataService {
     return http.delete(`/tutorials`);
   }
   findByTitle(title) {
-    return http.get(`/tutorials?title=${title}`);
+    return http.get(`/?title=${title}`);
   }
 }
 export default new CourseDataService();
