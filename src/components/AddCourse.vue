@@ -62,7 +62,7 @@
             class="form-control"
             id="description"
             required
-            v-model="tutorial.description"
+            v-model="course.description"
             name="description"
           />
         </div>

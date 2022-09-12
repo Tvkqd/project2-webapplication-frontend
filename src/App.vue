@@ -6,7 +6,6 @@
       dark
     >
       <div class="d-flex align-center">
-        <component v-bind:is="component" />
         <a href="https://www.oc.edu/">
           <v-img
           alt="OC Logo"
@@ -17,73 +16,39 @@
           width="130"
         />
         </a>
-        <v-btn
-        @click="course()"
-        text
-        color="red darken-4"
-        >Courses</v-btn>
-      
-       <!--  <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        /> -->
+        <v-toolbar-items>
+          <v-btn to="/" text color="red darken-4">Course</v-btn>
+          <v-btn to="/about" text color="red darken-4">About</v-btn>
+          <v-btn to="/hello" text color="red darken-4">Hello</v-btn>
+        </v-toolbar-items>
       </div>
-
-      <v-spacer></v-spacer>
-
-    <!--   <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn> -->
     </v-app-bar>
 
     <v-main>
-      <ListView/>
+      <router-view/>
     </v-main>
+
+    <v-footer class="pa-3"
+    color="blue lighten-5">
+    <v-spacer></v-spacer>
+    <div style="color:crimson"> Team1&nbsp; &copy; {{ new Date().getFullYear() }}</div>
+    <v-spacer></v-spacer>
+  </v-footer>
+
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-import Course from './components/Course';
-import CoursesList from './components/CoursesList.vue';
-import ListView from './views/List-View.vue';
-import AddCourse from './components/AddCourse.vue';
-import AboutApp from './views/About-App.vue';
-
 
 
 
 export default {
   name: 'App',
-
-  components: {
-    HelloWorld,
-    // AddCourse,
-    Course,
-    CoursesList,
-    ListView,
-    AddCourse,
-    AboutApp,
+  data() {
+   
 },
-
-  data: () => ({
-    //
-  }),
-  methods: {
-    course(){
-      return{
-        component: "Course"
-      }
-    }
-  }
+methods: {
+ 
+}
 };
 </script>
