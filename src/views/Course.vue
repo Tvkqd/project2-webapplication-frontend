@@ -21,7 +21,7 @@
               <v-btn color="gray">
                 <v-icon small class="ma-2">mdi-pencil</v-icon>
               </v-btn>
-              <v-icon small @click="deleteCourses(item.id)">mdi-delete</v-icon>
+              <v-icon small @click="deleteCourse(item.id)">mdi-delete</v-icon>
             </template>
           </v-data-table>
           <v-card-actions v-if="courses.length > 0">
