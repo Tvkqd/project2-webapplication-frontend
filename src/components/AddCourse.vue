@@ -5,16 +5,16 @@
     <v-card-text>
       <v-form>
         <v-text-field 
-                label="Name" 
-                v-model="course.name"
-        ></v-text-field>
-        <v-text-field 
                 label="Department" 
                 v-model="course.dept"
         ></v-text-field>
         <v-text-field 
                 label="Course Number" 
                 v-model="course.course_number"
+        ></v-text-field>
+        <v-text-field 
+                label="Name" 
+                v-model="course.name"
         ></v-text-field>
         <v-text-field 
                 label="Level" 
