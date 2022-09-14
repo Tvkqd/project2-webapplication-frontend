@@ -27,11 +27,11 @@
           </template>
         </v-data-table>
 
-        <v-card-actions v-if="courses.length > 0">
+        <!-- <v-card-actions v-if="courses.length > 0">
             <v-btn small color="error" @click.native="removeAllCourses">
               Remove All
             </v-btn>
-          </v-card-actions>
+          </v-card-actions> -->
       </v-card>
     </v-col>
   </v-row>

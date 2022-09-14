@@ -8,22 +8,22 @@ class CourseDataService {
     return http.get(`/${course_number}`);
   }
   create(data) {
-    return http.post("/courses-t1", data);
+    return http.post("/", data);
   }
   update(course_number, data) {
-    return http.put(`/courses-t1/${course_number}`, data);
+    return http.put(`/${course_number}`, data);
   }
-  delete(course_number) {
-    return http.delete(`/${course_number}`);
+  delete(id) {
+    return http.delete(`/${id}`);
   }
   deleteAll() {
-    return http.delete(`/courses-t1`);
+    return http.delete(`/`);
   }
   findName(name) {
-    return http.get(`/courses-t1/name?name=${name}`);
+    return http.get(`/name?name=${name}`);
   }
   findDept(dept) {
-    return http.get(`/courses-t1/dept?dept=${dept}`);
+    return http.get(`/dept?dept=${dept}`);
   }
 }
 export default new CourseDataService();

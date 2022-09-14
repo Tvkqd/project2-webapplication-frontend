@@ -47,9 +47,10 @@
             <label><strong>Name:</strong></label> {{ currentCourse.name }}
           </div>
           <div>
-            <label><strong>Description:</strong></label> {{ currentTutorial.description }}
+            <label><strong>Description:</strong></label> {{ currentCourse.description }}
           </div>
           <a class="badge badge-warning"
+
             :href="'/courses/' + currentCourse.course_number"
           >
             Edit
