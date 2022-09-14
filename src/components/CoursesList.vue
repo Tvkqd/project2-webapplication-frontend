@@ -97,7 +97,7 @@
       removeAllCourses() {
         CourseDataService.deleteAll()
           .then(response => {
-            //console.log(response.data);
+            console.log(response.data);
             this.refreshList();
           })
           .catch(e => {
