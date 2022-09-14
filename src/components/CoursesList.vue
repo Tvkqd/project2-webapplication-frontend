@@ -6,8 +6,7 @@
             v-model="name"/>
           <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="button"
-              @click="searchName()"
-            >
+              @click="searchName">
               Search
             </button>
           </div>
@@ -98,7 +97,7 @@
       removeAllCourses() {
         CourseDataService.deleteAll()
           .then(response => {
-            console.log(response.data);
+            //console.log(response.data);
             this.refreshList();
           })
           .catch(e => {

@@ -14,7 +14,7 @@ class CourseDataService {
     return http.put(`/courses-t1/${course_number}`, data);
   }
   delete(course_number) {
-    return http.delete(`/courses-t1/${course_number}`);
+    return http.delete(`/${course_number}`);
   }
   deleteAll() {
     return http.delete(`/courses-t1`);
