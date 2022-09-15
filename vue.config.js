@@ -7,10 +7,8 @@ module.exports = defineConfig({
 
 module.exports = {
   devServer: {
-    port: 8080
+    host: 8080,
   },
-
-  transpileDependencies: [
-    'vuetify'
-  ]
-}
+  publicPath: process.env.NODE_ENV === 'development' ? '/' : '/project2/2022/t1/',
+  transpileDependencies: ['vuetify'],
+};
