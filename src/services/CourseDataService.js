@@ -4,8 +4,8 @@ class CourseDataService {
   getAll() {
     return http.get("/");
   }
-  get(course_number) {
-    return http.get(`/${course_number}`);
+  get(id) {
+    return http.get(`/${id}`);
   }
   create(data) {
     return http.post("/", data);

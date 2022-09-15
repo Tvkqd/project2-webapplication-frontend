@@ -10,6 +10,11 @@ export default new Router({
       component: () => import("./views/List-View")
     },
     {
+      path: "/course",
+      name: "course-view",
+      component: () => import("./views/Course-View")
+    },
+    {
       path: "/add",
       name: "add",
       component: () => import("./components/AddCourse")

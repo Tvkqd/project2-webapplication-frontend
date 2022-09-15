@@ -1,25 +1,19 @@
 
 <template>
   <v-row align="center" class="list px-3 mx-auto">
-    <!--Search bar-->
-    <v-col cols="12" md="8">
-      <v-text-field v-model="course_number" label="Enter a Course Number"></v-text-field>
-    </v-col>
-    <v-col cols="12" md="4">
-      <v-btn small @click="searchCourseNumber">
-        Search
-      </v-btn>
-    </v-col>
+    <div class="update">
+      <h1>This is a COURSE READ page</h1>
+    </div>
+
 
     <!--Body-->
     <v-col cols="12" sm="12">
       <v-card class="mx-auto" tile>
-        <v-card-title>Courses</v-card-title>
+        <v-card-title></v-card-title>
         <v-data-table
           :headers="headers"
-          :items="courses"
-          :items-per-page="10"
-          @click:row="chooseCourse" 
+          :items="course"
+          :items-per-page="1"
         >
           <template v-slot:[`item.actions`]="{ item }">
             <v-icon small class="mr-2" @click="editCourse(item.id)">mdi-pencil</v-icon>
@@ -27,13 +21,9 @@
           </template>
         </v-data-table>
 
-        <!-- <v-card-actions v-if="courses.length > 0">
-            <v-btn small color="error" @click.native="removeAllCourses">
-              Remove All
-            </v-btn>
-          </v-card-actions> -->
       </v-card>
     </v-col>
+    
   </v-row>
 </template>
 <script>
@@ -42,7 +32,7 @@ export default {
   name: "courses-list",
   data() {
     return {
-      courses: [],
+      course: [],
       title: "",
       headers: [
         //add course stuff
@@ -55,46 +45,22 @@ export default {
     };
   },
   methods: {
-    retrieveCourses() {
-      CourseDataService.getAll()
+    retrieveCourse() {
+      console.log(this.id); //use correct id (params.id)? (this.id)? (id)?
+      CourseDataService.get(this.id)
         .then((response) => {
-          this.courses = response.data;
+          this.course = response.data;
           console.log(response.data);
         })
         .catch((e) => {
           console.log(e);
         });
     },
+    
     refreshList() {
-      this.retrieveCourses();
+      this.retrieveCourse();
     },
-    chooseCourse(course, v){
-      course.id; //set for test
-      console.log(course.id);
-      console.log(v);
-      this.$router.push({ name: "course-view", params: { id: course.id } });
-      
-    },
-    removeAllCourses() {
-      CourseDataService.deleteAll()
-        .then((response) => {
-          console.log(response.data);
-          this.refreshList();
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    },
-    searchCourseNumber() {
-      CourseDataService.get(this.course_number)
-        .then((response) => {
-          this.courses = response.data.map(this.getDisplayCourse);
-          console.log(response.data);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    },
+    
     editCourse(id) {
       this.$router.push({ name: "update", params: { id: id } });
     },
@@ -117,7 +83,7 @@ export default {
     },
   },
   mounted() {
-    this.retrieveCourses();
+    this.retrieveCourse();
   },
 };
 </script>
