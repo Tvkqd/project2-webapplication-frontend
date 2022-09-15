@@ -42,7 +42,7 @@
     <v-card-actions>
       <v-spacer></v-spacer>
       <v-btn color="gray" @click="save()">Submit</v-btn>
-      <v-btn color="gray">Clear</v-btn>
+      <v-btn color="gray" @click="clear()">Clear</v-btn>
       <v-spacer></v-spacer>
     </v-card-actions>
   </v-card>
@@ -103,8 +103,19 @@
           .catch(e => {
             console.log(e);
           });
+          this.$router.back();
       },
-      
+
+      clear() {
+
+        this.course.dept = "";
+        this.course.course_number = "";
+        this.course.level = "";
+        this.course.hours = "";
+        this.course.name = "";
+        this.course.description = "";
+      },
+
       newCourse() {
         this.submitted = false;
         this.course = {};
