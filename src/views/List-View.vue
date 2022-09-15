@@ -10,6 +10,14 @@
         Search
       </v-btn>
     </v-col>
+    <v-col>
+      <v-text-field v-model="fillter_dept" label="Filtter By dept"></v-text-field>
+    </v-col>
+      <v-col cols="12" md="4">
+      <v-btn small @click="filtter_course">
+        Fillter
+      </v-btn>
+    </v-col>
 
     <!--Body-->
     <v-col cols="12" sm="12">
@@ -37,6 +45,7 @@
   </v-row>
 </template>
 <script>
+import { response } from "express";
 import CourseDataService from "../services/CourseDataService";
 export default {
   name: "courses-list",
@@ -47,7 +56,7 @@ export default {
       headers: [
         //add course stuff
         { text: "Department", align: "start", sortable: false, value: "dept" },
-        { text: "Course Number", value: "course_number", sortable: false },
+        { text: "Course Number", value: "course_number", sortable: true },
         { text: "Name", value: "name", sortable: false },
         { text: "Description", value: "description", sortable: false },
         { text: "Actions", value: "actions", sortable: false },
@@ -90,6 +99,16 @@ export default {
         .catch((e) => {
           console.log(e);
         });
+    },
+    filtter_course(){
+      CourseDataService.findDept(this.fillter_dept)
+      .than((response) => {
+        this.courses = response.data.map(this.getDisplayCourse);
+        console.log(response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
     },
     editCourse(id) {
       this.$router.push({ name: "course-details", params: { id: id } });
