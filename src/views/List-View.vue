@@ -17,6 +17,9 @@
       <v-btn small @click="filterCourse">
         Filter
       </v-btn>
+      <v-btn small @click="refreshList">
+        clear
+      </v-btn>
     </v-col>
 
     <!--Body-->
@@ -100,7 +103,7 @@ export default {
         });
     },
     filterCourse(){
-      CourseDataService.findDept("ARTS")
+      CourseDataService.findDept(this.filter_dept)
       .then((response) => {
         this.courses = response.data.map(this.getDisplayCourse);
         console.log(response.data);
