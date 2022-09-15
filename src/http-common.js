@@ -11,7 +11,6 @@ else
 
 export default axios.create({
   baseURL: baseurl,
-   //origin: "http://localhost:3001/course-t1"
   headers: {
     "Content-type": "application/json"
   }
