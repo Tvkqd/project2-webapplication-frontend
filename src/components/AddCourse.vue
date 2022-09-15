@@ -103,6 +103,7 @@
           .catch(e => {
             console.log(e);
           });
+          this.$router.back();
       },
 
       clear() {
