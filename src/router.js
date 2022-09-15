@@ -10,16 +10,6 @@ export default new Router({
       component: () => import("./views/List-View")
     },
     {
-      path: "/about",
-      name: "about",
-      component: () => import("./views/About-App")
-    },
-    {
-      path: "/hello",
-      name: "hello",
-      component: () => import("./components/HelloWorld")
-    },
-    {
       path: "/add",
       name: "add",
       component: () => import("./components/AddCourse")
@@ -27,6 +17,11 @@ export default new Router({
     {
       path: "/update",
       name: "update",
+      component: () => import("./components/UpdateCourse")
+    },
+    {
+      path: "/delete",
+      name: "delete",
       component: () => import("./components/UpdateCourse")
     }
   ]

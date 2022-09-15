@@ -5,12 +5,17 @@
     <v-card-text>
       <v-form>
         <v-text-field 
-                label="Name" 
                 v-model="course.name"
+                :rules="[(v) => !!v || 'Course name is required']"
+                label="Name" 
+                required
         ></v-text-field>
         <v-text-field 
-                label="Department" 
                 v-model="course.dept"
+                :rules="[(v) => !!v || 'Department is required']"
+                label="Department" 
+                required
+
         ></v-text-field>
         <v-text-field 
                 label="Course Number" 
@@ -60,7 +65,7 @@
       };
     },
     methods: {
-      saveTutorial() {
+    /* saveTutorial() {
         var data = {
           dept: this.course.dept,
           course_number: this.course.course_number,
@@ -79,7 +84,7 @@
             console.log(e);
           });
       },
-
+      */
       save() {
         var data = {
           dept: this.course.dept,
