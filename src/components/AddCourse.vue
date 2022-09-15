@@ -1,78 +1,51 @@
 <template>
-    <div class="submit-form">
-      <div v-if="!submitted">
-        <div class="form-group">
-          <label for="dept">Department</label>
-          <input
-            type="text"
-            class="form-control"
-            id="dept"
-            required
-            v-model="course.dept"
-            name="dept"
-          />
-        </div>
-        <div class="form-group">
-          <label for="course_number">Course Number</label>
-          <input
-            type="text"
-            class="form-control"
-            id="course_number"
-            required
-            v-model="course.course_number"
-            name="course_number"
-          />
-        </div>
-        <div class="form-group">
-          <label for="level">Level</label>
-          <input
-            type="text"
-            class="form-control"
-            id="level"
-            required
-            v-model="course.level"
-            name="level"
-          />
-        </div>
-        <div class="form-group">
-          <label for="hours">Hours</label>
-          <input
-            type="text"
-            class="form-control"
-            id="hours"
-            required
-            v-model="course.hours"
-            name="hours"
-          />
-        </div>
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            required
-            v-model="course.name"
-            name="name"
-          />
-        </div>
-        <div class="form-group">
-          <label for="description">Description</label>
-          <input
-            class="form-control"
-            id="description"
-            required
-            v-model="tutorial.description"
-            name="description"
-          />
-        </div>
-        <button @click="saveCourse" class="btn btn-success">Submit</button>
-      </div>
-      <div v-else>
-        <h4>You submitted successfully!</h4>
-        <button class="btn btn-success" @click="newCourse">Add</button>
-      </div>
-    </div>
+  <v-card>
+    <v-card-title>Add Course</v-card-title>
+    
+    <v-card-text>
+      <v-form>
+        <v-text-field 
+                v-model="course.name"
+                :rules="[(v) => !!v || 'Course name is required']"
+                label="Name" 
+                required
+        ></v-text-field>
+        <v-text-field 
+                v-model="course.dept"
+                :rules="[(v) => !!v || 'Department is required']"
+                label="Department" 
+                required
+
+        ></v-text-field>
+        <v-text-field 
+                label="Course Number" 
+                v-model="course.course_number"
+        ></v-text-field>
+        <v-text-field 
+                label="Level" 
+                v-model="course.level"
+        ></v-text-field>
+        <v-text-field 
+                label="Hours" 
+                v-model="course.hours"
+        ></v-text-field>
+        <v-text-field 
+                label="Description" 
+                v-model="course.description"
+        ></v-text-field>
+    </v-form>
+    
+    </v-card-text>
+
+   
+    
+    <v-card-actions>
+      <v-spacer></v-spacer>
+      <v-btn color="gray" @click="save()">Submit</v-btn>
+      <v-btn color="gray">Clear</v-btn>
+      <v-spacer></v-spacer>
+    </v-card-actions>
+  </v-card>
   </template>
   <script>
   import CourseDataService from "../services/CourseDataService";
@@ -85,7 +58,6 @@
           course_number: "",
           level: "",
           hours: "",
-          title: "",
           name: "",
           description: ""
         },
@@ -93,7 +65,27 @@
       };
     },
     methods: {
-      saveTutorial() {
+    /* saveTutorial() {
+        var data = {
+          dept: this.course.dept,
+          course_number: this.course.course_number,
+          level: this.course.level,
+          hours: this.course.hours,
+          name: this.course.name,
+          description: this.course.description
+        };
+        CourseDataService.create(data)
+          .then(response => {
+            this.course.course_number = response.data.course_number;
+            console.log(response.data);
+            this.submitted = true;
+          })
+          .catch(e => {
+            console.log(e);
+          });
+      },
+      */
+      save() {
         var data = {
           dept: this.course.dept,
           course_number: this.course.course_number,
