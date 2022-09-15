@@ -11,7 +11,11 @@
       </v-btn>
     </v-col>
     <v-col>
-      <v-text-field v-model="filter_dept" label="Filter By dept"></v-text-field>
+      <div>
+        <label class="typo__label">select Department</label>
+        <multiselect v-model="filter_dept" :options="depts" :searchable="true" :close-on-select="true" placeholder="Pick a value"></multiselect>
+      </div>
+      <!-- <v-text-field v-model="filter_dept" label="Filter By dept"></v-text-field> -->
     </v-col>
       <v-col cols="12" md="4">
       <v-btn small @click="filterCourse">
@@ -48,11 +52,15 @@
   </v-row>
 </template>
 <script>
+
+import Multiselect from 'vue-multiselect';
 import CourseDataService from "../services/CourseDataService";
 export default {
   name: "courses-list",
   data() {
     return {
+      depts : [],
+      filter_dept: '',
       courses: [],
       title: "",
       headers: [
@@ -65,12 +73,23 @@ export default {
       ],
     };
   },
+  components: {
+    Multiselect
+  },
   methods: {
+    getDepts(){
+      for(let i=0;i<this.courses.length;i++){
+        if(!this.depts.find(dept => dept === this.courses[i].dept))
+          this.depts.push(this.courses[i].dept)
+      }
+      console.log(this.depts);
+    },
     retrieveCourses() {
       CourseDataService.getAll()
         .then((response) => {
           this.courses = response.data;
           console.log(response.data);
+          this.getDepts();
         })
         .catch((e) => {
           console.log(e);
@@ -138,6 +157,7 @@ export default {
   },
 };
 </script>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style>
 .list {
   max-width: 750px;
