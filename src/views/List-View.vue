@@ -11,11 +11,11 @@
       </v-btn>
     </v-col>
     <v-col>
-      <v-text-field v-model="fillter_dept" label="Filtter By dept"></v-text-field>
+      <v-text-field v-model="filter_dept" label="Filter By dept"></v-text-field>
     </v-col>
       <v-col cols="12" md="4">
-      <v-btn small @click="filtter_course">
-        Fillter
+      <v-btn small @click="filterCourse">
+        Filter
       </v-btn>
     </v-col>
 
@@ -45,7 +45,6 @@
   </v-row>
 </template>
 <script>
-import { response } from "express";
 import CourseDataService from "../services/CourseDataService";
 export default {
   name: "courses-list",
@@ -100,9 +99,9 @@ export default {
           console.log(e);
         });
     },
-    filtter_course(){
-      CourseDataService.findDept(this.fillter_dept)
-      .than((response) => {
+    filterCourse(){
+      CourseDataService.findDept("ARTS")
+      .then((response) => {
         this.courses = response.data.map(this.getDisplayCourse);
         console.log(response.data);
       })
