@@ -13,9 +13,8 @@
     <v-col>
       <div>
         <label class="typo__label">select Department</label>
-        <multiselect v-model="filter_dept" :options="depts" :searchable="true" :close-on-select="true" placeholder="Pick a value"></multiselect>
+        <multiselect v-model="filter_dept" :options="depts" :searchable="true" :close-on-select="true" placeholder="Pick a Department"></multiselect>
       </div>
-      <!-- <v-text-field v-model="filter_dept" label="Filter By dept"></v-text-field> -->
     </v-col>
       <v-col cols="12" md="4">
       <v-btn small @click="filterCourse">
