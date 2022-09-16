@@ -1,19 +1,16 @@
 
 <template>
   <v-row align="center" class="list px-3 mx-auto">
-    <div class="update">
-      <h1>This is a COURSE READ page</h1>
-    </div>
-
-
     <!--Body-->
+
     <v-col cols="12" sm="12">
       <v-card class="mx-auto" tile>
-        <v-card-title></v-card-title>
+        <v-card-title v-text=course.name></v-card-title>
         <v-data-table
+          hide-default-footer
           :headers="headers"
-          :items="course"
-          :items-per-page="1"
+          :items="[course]"
+          @click:row="chooseCourse" 
         >
           <template v-slot:[`item.actions`]="{ item }">
             <v-icon small class="mr-2" @click="editCourse(item.id)">mdi-pencil</v-icon>
@@ -30,6 +27,7 @@
 import CourseDataService from "../services/CourseDataService";
 export default {
   name: "courses-list",
+  props: ["id"],
   data() {
     return {
       course: [],
@@ -39,6 +37,8 @@ export default {
         { text: "Department", align: "start", sortable: false, value: "dept" },
         { text: "Course Number", value: "course_number", sortable: false },
         { text: "Name", value: "name", sortable: false },
+        { text: "Hours", value: "hours", sortable: false },
+        { text: "Level", value: "level", sortable: false },
         { text: "Description", value: "description", sortable: false },
         { text: "Actions", value: "actions", sortable: false },
       ],
@@ -46,6 +46,7 @@ export default {
   },
   methods: {
     retrieveCourse() {
+      console.log("hello");
       console.log(this.id); //use correct id (params.id)? (this.id)? (id)?
       CourseDataService.get(this.id)
         .then((response) => {
