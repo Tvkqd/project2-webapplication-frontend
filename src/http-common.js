@@ -6,7 +6,7 @@ if(process.env.NODE_ENV === "development") {
 }
 else
 {
-  baseurl = "/courses-t1/";
+  baseurl = "/course-t1/";
 }
 
 export default axios.create({
