@@ -10,6 +10,20 @@
         Search
       </v-btn>
     </v-col>
+    <v-col>
+      <div>
+        <label class="typo__label">select Department</label>
+        <multiselect v-model="filter_dept" :options="depts" :searchable="true" :close-on-select="true" placeholder="Pick a Department"></multiselect>
+      </div>
+    </v-col>
+      <v-col cols="12" md="4">
+      <v-btn small @click="filterCourse">
+        Filter
+      </v-btn>
+      <v-btn small @click="refreshList">
+        clear
+      </v-btn>
+    </v-col>
 
     <!--Body-->
     <v-col cols="12" sm="12">
@@ -37,29 +51,44 @@
   </v-row>
 </template>
 <script>
+
+import Multiselect from 'vue-multiselect';
 import CourseDataService from "../services/CourseDataService";
 export default {
   name: "courses-list",
   data() {
     return {
+      depts : [],
+      filter_dept: '',
       courses: [],
       title: "",
       headers: [
         //add course stuff
         { text: "Department", align: "start", sortable: false, value: "dept" },
-        { text: "Course Number", value: "course_number", sortable: false },
+        { text: "Course Number", value: "course_number", sortable: true },
         { text: "Name", value: "name", sortable: false },
         { text: "Description", value: "description", sortable: false },
         { text: "Actions", value: "actions", sortable: false },
       ],
     };
   },
+  components: {
+    Multiselect
+  },
   methods: {
+    getDepts(){
+      for(let i=0;i<this.courses.length;i++){
+        if(!this.depts.find(dept => dept === this.courses[i].dept))
+          this.depts.push(this.courses[i].dept)
+      }
+      console.log(this.depts);
+    },
     retrieveCourses() {
       CourseDataService.getAll()
         .then((response) => {
           this.courses = response.data;
           console.log(response.data);
+          this.getDepts();
         })
         .catch((e) => {
           console.log(e);
@@ -91,6 +120,16 @@ export default {
           console.log(e);
         });
     },
+    filterCourse(){
+      CourseDataService.findDept(this.filter_dept)
+      .then((response) => {
+        this.courses = response.data.map(this.getDisplayCourse);
+        console.log(response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+    },
     editCourse(id) {
       this.$router.push({ name: "course-details", params: { id: id } });
     },
@@ -117,6 +156,7 @@ export default {
   },
 };
 </script>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style>
 .list {
   max-width: 750px;
