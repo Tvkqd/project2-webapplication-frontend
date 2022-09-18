@@ -33,9 +33,9 @@
           :headers="headers"
           :items="courses"
           :items-per-page="10"
-          @click:row="chooseCourse"
         >
           <template v-slot:[`item.actions`]="{ item }">
+            <v-icon small class="mr-2" @click="chooseCourse(item.id)">mdi-book</v-icon>
             <v-icon small class="mr-2" @click="editCourse(item.id)">mdi-pencil</v-icon>
             <v-icon small @click="deleteCourse(item.id)">mdi-delete</v-icon>
           </template>
@@ -97,8 +97,8 @@ export default {
     refreshList() {
       this.retrieveCourses();
     },
-    chooseCourse(){
-    
+    chooseCourse(id){
+      this.$router.push({ name: "course-view", params: { id: id } });
     },
     removeAllCourses() {
       CourseDataService.deleteAll()
@@ -131,7 +131,7 @@ export default {
       });
     },
     editCourse(id) {
-      this.$router.push({ name: "course-details", params: { id: id } });
+      this.$router.push({ name: "update", params: { id: id } });
     },
     deleteCourse(id) {
       CourseDataService.delete(id)
