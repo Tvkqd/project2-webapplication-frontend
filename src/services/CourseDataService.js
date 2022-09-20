@@ -20,10 +20,10 @@ class CourseDataService {
     return http.delete(`/`);
   }
   findName(name) {
-    return http.get(`/name?name=${name}`);
+    return http.get(`/name/${name}`);
   }
   findDept(dept) {
-    return http.get(`/dept?dept=${dept}`);
+    return http.get(`/dept/${dept}`);
   }
 }
 export default new CourseDataService();
