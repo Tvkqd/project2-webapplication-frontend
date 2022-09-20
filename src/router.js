@@ -6,19 +6,30 @@ export default new Router({
   routes: [
     {
       path: "/",
-      alias: "/courses",
-      name: "courses",
-      component: () => import("./components/CourseList")
+      name: "list-view",
+      component: () => import("./views/List-View")
     },
     {
-      path: "/courses/:id",
-      name: "course-details",
-      component: () => import("./components/Course")
+      path: "/course", //need to store in url. currently can't reload page manually.
+      props: true,
+      name: "course-view",
+      component: () => import("./views/Course-View")
     },
     {
       path: "/add",
       name: "add",
       component: () => import("./components/AddCourse")
+    },
+    {
+      path: "/update",
+      props: true,
+      name: "update",
+      component: () => import("./components/UpdateCourse")
+    },
+    {
+      path: "/delete",
+      name: "delete",
+      component: () => import("./components/UpdateCourse")
     }
   ]
 });
