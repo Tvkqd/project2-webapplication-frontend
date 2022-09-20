@@ -3,10 +3,10 @@
   <v-row align="center" class="list px-3 mx-auto">
     <!--Search bar-->
     <v-col cols="12" md="8">
-      <v-text-field v-model="course_number" label="Enter a Course Number"></v-text-field>
+      <v-text-field v-model="course_name" label="Enter a Course Name"></v-text-field>
     </v-col>
     <v-col cols="12" md="4">
-      <v-btn small @click="searchCourseNumber">
+      <v-btn small @click="searchCourseName">
         Search
       </v-btn>
     </v-col>
@@ -33,6 +33,7 @@
           :headers="headers"
           :items="courses"
           :items-per-page="10"
+          @click:row="chooseCourse"
         >
           <template v-slot:[`item.actions`]="{ item }">
             <v-icon small class="mr-2" @click="chooseCourse(item.id)">mdi-book</v-icon>
@@ -110,8 +111,8 @@ export default {
           console.log(e);
         });
     },
-    searchCourseNumber() {
-      CourseDataService.get(this.course_number)
+    searchCourseName() {
+      CourseDataService.findName(this.course_name)
         .then((response) => {
           this.courses = response.data.map(this.getDisplayCourse);
           console.log(response.data);
