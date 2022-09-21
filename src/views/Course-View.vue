@@ -67,7 +67,7 @@ export default {
     deleteCourse(id) {
       CourseDataService.delete(id)
         .then(() => {
-          this.refreshList();
+          this.$router.back();
         })
         .catch((e) => {
           console.log(e);
