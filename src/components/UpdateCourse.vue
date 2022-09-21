@@ -41,7 +41,7 @@
       <v-spacer></v-spacer>
       <v-btn color="gray" @click="save()">Submit</v-btn>
       <v-btn color="gray" @click="clear()">Clear</v-btn>
-      <v-btn color="gray" @click="refreshList()">Reset</v-btn>
+      <v-btn color="gray" @click="reset()">Reset</v-btn>
       <v-spacer></v-spacer>
     </v-card-actions>
   </v-card>
@@ -53,14 +53,8 @@
     props: ["id"],
     data() {
       return {
-        course: {
-          dept: "",
-          course_number: "",
-          level: "",
-          hours: "",
-          name: "",
-          description: ""
-        },
+        course: [],
+        holdCourse: [],
         submitted: false
       };
     },
@@ -72,7 +66,7 @@
         .then((response) => {
           console.log(response.data);
           this.course = response.data;
-          this.holdCourse = response.data;
+          this.holdCourse = this.course;
           console.log(response.data);
         })
         .catch((e) => {
@@ -90,12 +84,10 @@
           hours: this.course.hours,
           name: this.course.name,
           description: this.course.description
-          
         };
-        console.log(this.id); 
-        CourseDataService.update(this.id, data) 
+        CourseDataService.create(data) 
           .then(response => {
-            
+            this.course.course_number = response.data.course_number;
             console.log(response.data);
             this.submitted = true;
           })
@@ -113,7 +105,11 @@
         this.course.hours = "";
         this.course.name = "";
         this.course.description = "";
+      },
 
+      reset() {
+        console.log(this.holdCourse);
+        this.course = this.holdCourse;
       },
 
       newCourse() {

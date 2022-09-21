@@ -10,8 +10,8 @@ class CourseDataService {
   create(data) {
     return http.post("/", data);
   }
-  update(id, data) {
-    return http.put(`/${id}`, data);
+  update(course_number, data) {
+    return http.put(`/${course_number}`, data);
   }
   delete(id) {
     return http.delete(`/${id}`);
