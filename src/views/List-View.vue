@@ -32,8 +32,7 @@
         <v-data-table
           :headers="headers"
           :items="courses"
-          :items-per-page="10"
-        >
+          :items-per-page="10">
           <template v-slot:[`item.actions`]="{ item }">
             <v-icon small class="mr-2" @click="chooseCourse(item.id)">mdi-book</v-icon>
             <v-icon small class="mr-2" @click="editCourse(item.id)">mdi-pencil</v-icon>

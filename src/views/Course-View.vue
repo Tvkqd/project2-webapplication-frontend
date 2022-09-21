@@ -10,7 +10,6 @@
           hide-default-footer
           :headers="headers"
           :items="[course]"
-          @click:row="chooseCourse" 
         >
           <template v-slot:[`item.actions`]="{ item }">
             <v-icon small class="mr-2" @click="editCourse(item.id)">mdi-pencil</v-icon>
@@ -85,7 +84,7 @@ export default {
   },
   mounted() {
     this.retrieveCourse();
-  },
+  }
 };
 </script>
 <style>

@@ -10,7 +10,7 @@ export default new Router({
       component: () => import("./views/List-View")
     },
     {
-      path: "/course", //need to store in url. currently can't reload page manually.
+      path: "/course/:id", //need to store in url. currently can't reload page manually.
       props: true,
       name: "course-view",
       component: () => import("./views/Course-View")
@@ -21,7 +21,7 @@ export default new Router({
       component: () => import("./components/AddCourse")
     },
     {
-      path: "/update",
+      path: "/update/:id",
       props: true,
       name: "update",
       component: () => import("./components/UpdateCourse")
