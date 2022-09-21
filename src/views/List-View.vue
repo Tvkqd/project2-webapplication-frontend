@@ -32,9 +32,7 @@
         <v-data-table
           :headers="headers"
           :items="courses"
-          :items-per-page="10"
-          
-        >
+          :items-per-page="10">
           <template v-slot:[`item.actions`]="{ item }">
             <v-icon small class="mr-2" @click="chooseCourse(item.id)">mdi-book</v-icon>
             <v-icon small class="mr-2" @click="editCourse(item.id)">mdi-pencil</v-icon>
@@ -87,7 +85,7 @@ export default {
     retrieveCourses() {
       CourseDataService.getAll()
         .then((response) => {
-          this.courses = response.data;
+          this.courses = response.data.map(this.getDisplayCourse);
           console.log(response.data);
           this.getDepts();
         })
@@ -145,6 +143,7 @@ export default {
     },
     getDisplayCourse(course) {
       return {
+        id: course.id,
         course_number: course.course_number,
         dept: course.dept.length > 30 ? course.dept.substr(0, 30) + "..." : course.dept,
         name: course.name.length > 30 ? course.name.substr(0, 30) + "..." : course.name,
